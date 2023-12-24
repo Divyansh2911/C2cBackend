@@ -1,10 +1,12 @@
 const express = require("express");
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
+const cors = require('cors')
 const {getUser,getUserById,getMap,createUser,editUser,getItems,getItemById,getItemByOwnId,createItems,deleteItem} = require('./components')
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
+app.use(cors());
 dotenv.config({path : `${__dirname}/config.env`})
 const db = process.env.DATABASE.replace('<password>', process.env.DATABASE_PASSWORD)
 mongoose.connect(db,{

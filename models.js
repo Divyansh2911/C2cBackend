@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use(cors());
 const users_Schema = new mongoose.Schema({
     userId: { type: Number, required: true, unique: true },
     userName: { type: String, required: true },

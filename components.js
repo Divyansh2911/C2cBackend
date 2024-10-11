@@ -6,7 +6,7 @@ app.use(express.urlencoded({ extended: true }))
 
 const getUser = async (req, res) => {
     const { id, email, password } = req.query;
-
+    console.log(id,email,password);
     try {
         if (email && password) {
             const user = await users_Model.find({ email: email, password: password });
@@ -24,6 +24,7 @@ const getUser = async (req, res) => {
 }
 const getUserById = async(req,res)=>{
     const{id} = req.params;
+    console.log(id);
     try {
         const user = await users_Model.findOne(id?{userId:id}:{})
         res.send(user);
